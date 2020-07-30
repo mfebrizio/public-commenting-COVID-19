@@ -2,11 +2,11 @@
 *** All Dockets (no filter) ***
 
 ** load aggregate data **
-cd "C:\Users\mark\Box Sync\_MF\Assignments\Insights\Public Commenting and COVID-19\Data\EPA"
+cd "SET_DIRECTORY"
 import delimited data_for_analysis_monthly, ///
 varnames(1) encoding(UTF-8) bindquote(strict) clear
 
-cd "C:\Users\mark\Box Sync\_MF\Assignments\Insights\Public Commenting and COVID-19\Data\EPA\Figures"
+cd "SET_DIRECTORY"
 graph set window fontface "Times New Roman"
 
 * 1) monthly comments
@@ -70,12 +70,12 @@ graph export "2_combo_adjusted_monthly.png", as(png) replace
 *** Filter Science Rule ***
 
 ** load monthly data **
-cd "C:\Users\mark\Box Sync\_MF\Assignments\Insights\Public Commenting and COVID-19\Data\EPA"
+cd "SET_DIRECTORY"
 import delimited data_for_analysis_monthly_filterSR, ///
 varnames(1) encoding(UTF-8) bindquote(strict) clear
 sort receivedmonth sciencerule, stable
 
-cd "C:\Users\mark\Box Sync\_MF\Assignments\Insights\Public Commenting and COVID-19\Data\EPA\Figures"
+cd "SET_DIRECTORY"
 graph set window fontface "Times New Roman"
 
 * A1) monthly comments (exclude science rule)
@@ -137,7 +137,7 @@ graph combine ///
 graph export "3_combo_adjusted_monthly_excludeSR.png", as(png) replace
 
 ** load daily data **
-cd "C:\Users\mark\Box Sync\_MF\Assignments\Insights\Public Commenting and COVID-19\Data\EPA"
+cd "SET_DIRECTORY"
 import delimited data_for_analysis_daily_filterSR, ///
 varnames(1) encoding(UTF-8) bindquote(strict) clear
 sort dtreceived sciencerule, stable
@@ -149,7 +149,7 @@ format date_received %td
 gen covid = 1 if date_received >= td(11mar2020)
 replace covid = 0 if date_received < td(11mar2020)
 
-cd "C:\Users\mark\Box Sync\_MF\Assignments\Insights\Public Commenting and COVID-19\Data\EPA\Figures"
+cd "SET_DIRECTORY"
 graph set window fontface "Times New Roman"
 
 * 4) daily comments (exclude science rule)
